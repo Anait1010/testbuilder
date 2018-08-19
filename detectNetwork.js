@@ -14,12 +14,12 @@ var detectNetwork = function(cardNumber) {
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
   var prefixOne = parseInt(cardNumber.slice(0,1))
-  var orefixTwo = parseInt(cardNumber.slice(0,2))
+  var prefixTwo = parseInt(cardNumber.slice(0,2))
   var prefixFour = parseInt(cardNumber.slice(0,4))
   
   if(prefixOne === 5 && cardNumber.length === 16) {
   	return "Master Card";
-  } else if((prefixTwo === 34 || prefixTwo === 37 && cardNumber.length === 15) {
+  } else if((prefixTwo === 34 || prefixTwo === 37) && cardNumber.length === 15) {
   	return "American Express";
   } else if((prefixTwo === 38 || prefixTwo === 39) && cardNumber.length === 14) {
   	return "Diner's Club";
