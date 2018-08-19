@@ -17,6 +17,7 @@ var detectNetwork = function(cardNumber) {
   var prefixTwo = parseInt(cardNumber.slice(0,2))
   var prefixFour = parseInt(cardNumber.slice(0,4))
   
+  // || prefixOne === 52 || prefixOne === 53 || prefixOne === 54 || prefixOne === 55)
   if(prefixOne === 5 && cardNumber.length === 16) {
   	return "Master Card";
   } else if((prefixTwo === 34 || prefixTwo === 37) && cardNumber.length === 15) {
