@@ -15,20 +15,21 @@ var detectNetwork = function(cardNumber) {
   // Once you've read this, go ahead and try to implement this function, then return to the console.
   var prefixOne = parseInt(cardNumber.slice(0,1))
   var prefixTwo = parseInt(cardNumber.slice(0,2))
+  var prefixThree = parseInt(cardNumber.slice(0,3))
   var prefixFour = parseInt(cardNumber.slice(0,4))
-  
+  // console.log(cardNumber)
   // || prefixOne === 52 || prefixOne === 53 || prefixOne === 54 || prefixOne === 55)
   if(prefixOne === 5 && cardNumber.length === 16) {
-  	return "Master Card";
+  	return "MasterCard";
   } else if((prefixTwo === 34 || prefixTwo === 37) && cardNumber.length === 15) {
   	return "American Express";
   } else if((prefixTwo === 38 || prefixTwo === 39) && cardNumber.length === 14) {
   	return "Diner's Club";
   } else if(prefixOne === 4 && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
   	return "Visa";
-  } else if(prefixOne === 7 && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
+  } else if((prefixFour === 5018 || prefixFour === 5020 || prefixFour === 5038 || prefixFour === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
   	return "Maestro";
-  } else if(prefixFour === 6011 && (cardNumber.length === 16 || cardNumber.length === 19)) {
+  } else if((prefixTwo === 65 || prefixFour === 6011 || prefixThree === 644 || prefixThree === 645 || prefixThree === 646 || prefixThree === 647 || prefixThree === 648 || prefixThree === 649) && (cardNumber.length === 16 || cardNumber.length === 19)) {
   	return "Discover";
   }
 };
