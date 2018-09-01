@@ -17,9 +17,9 @@ var detectNetwork = function(cardNumber) {
   var prefixTwo = parseInt(cardNumber.slice(0,2))
   var prefixThree = parseInt(cardNumber.slice(0,3))
   var prefixFour = parseInt(cardNumber.slice(0,4))
-  // console.log(cardNumber)
-  // || prefixOne === 52 || prefixOne === 53 || prefixOne === 54 || prefixOne === 55)
-  if(prefixOne === 5 && cardNumber.length === 16) {
+  var prefixSix = parseInt(cardNumber.slice(0,6))
+  //console.log(cardNumber)
+  if((prefixTwo === 51 || prefixTwo === 52 || prefixTwo === 53 || prefixTwo === 54 || prefixTwo === 55) && cardNumber.length === 16) {
   	return "MasterCard";
   } else if((prefixTwo === 34 || prefixTwo === 37) && cardNumber.length === 15) {
   	return "American Express";
@@ -31,7 +31,11 @@ var detectNetwork = function(cardNumber) {
   	return "Maestro";
   } else if((prefixTwo === 65 || prefixFour === 6011 || prefixThree === 644 || prefixThree === 645 || prefixThree === 646 || prefixThree === 647 || prefixThree === 648 || prefixThree === 649) && (cardNumber.length === 16 || cardNumber.length === 19)) {
   	return "Discover";
-  }
+  } else if((prefixThree >= 624 && prefixThree <= 626) || (prefixFour >= 6282 && prefixFour <= 6288) || (prefixSix >= 622126 && prefixSix <= 622925) && (cardNumber.length === 16 || cardNumber.length === 19)) {
+    return "China UnionPay";
+  } else if ((prefixFour === 4903 || prefixFour === 4905 || prefixFour === 4911 || prefixFour === 4936 || prefixFour === 6333 || prefixFour === 6759 || prefixSix === 564182 || prefixSix === 633110) && (cardNumber.length === 16 || cardNumber.length === 18 || cardNumber.length === 19)) {
+    return "Switch"
+  } 
 };
 
 
